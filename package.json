@@ -27,6 +27,8 @@
     "@rbxts/object-utils": "^1.0.4",
     "@rbxts/pretty-react-hooks": "^0.6.1",
     "@rbxts/react": "^17.2.3",
-    "@rbxts/react-roblox": "^17.2.3"
+    "@rbxts/react-reflex": "^0.3.4",
+    "@rbxts/react-roblox": "^17.2.3",
+    "@rbxts/reflex": "^4.3.1"
   }
 }
