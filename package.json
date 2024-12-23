@@ -22,5 +22,10 @@
     "prettier": "^3.4.2",
     "roblox-ts": "^3.0.0",
     "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@rbxts/pretty-react-hooks": "^0.6.1",
+    "@rbxts/react": "^17.2.3",
+    "@rbxts/react-roblox": "^17.2.3"
   }
 }
