@@ -50,6 +50,11 @@ export function Board() {
 													: Color3.fromRGB(255, 255, 224)
 											}
 										>
+											<textlabel
+												Size={new UDim2(1, 0, 1, 0)}
+												BackgroundTransparency={1}
+												Text={cell === "PLAYER_1" ? "1" : "2"}
+											/>
 											<uicorner CornerRadius={new UDim(0.5, 0.5)} />
 										</frame>
 									)}
