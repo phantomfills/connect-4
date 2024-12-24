@@ -1,3 +1,3 @@
 export const images = {
-	drop_counter: "http://www.roblox.com/asset/?id=120791853397261",
+	down_arrow: "rbxassetid://17157871139",
 } as const;

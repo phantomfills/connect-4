@@ -15,9 +15,9 @@ export function DropButton({ columnIndex }: DropButtonProps) {
 
 	return (
 		<imagebutton
-			Image={images.drop_counter}
+			Image={images.down_arrow}
 			Size={new UDim2(0, 40, 0, 40)}
-			Position={new UDim2(0, columnIndex * 50 + 10, 0, 0)}
+			Position={new UDim2(0, columnIndex * 50 + 5, 0, 0)}
 			BackgroundColor3={Color3.fromRGB(255, 255, 255)}
 			BackgroundTransparency={0.7}
 			AutoButtonColor={true}
