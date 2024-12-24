@@ -9,12 +9,6 @@ interface CellProps {
 }
 
 export function Cell({ columnIndex, rowIndex, cell }: CellProps) {
-	const [rotation, setRotation] = useState(0);
-
-	useEffect(() => {
-		setRotation(math.random(-15, 15));
-	}, []);
-
 	return (
 		<frame
 			Size={new UDim2(0, 50, 0, 50)}
@@ -31,18 +25,6 @@ export function Cell({ columnIndex, rowIndex, cell }: CellProps) {
 					Position={new UDim2(0, 5, 0, 5)}
 					BackgroundColor3={cell === "PLAYER_1" ? colors.green : colors.orange}
 				>
-					<textlabel
-						Text="4"
-						TextColor3={colors.white}
-						Size={new UDim2(0.8, 0, 0.8, 0)}
-						Position={new UDim2(0.1, 0, 0.1, 0)}
-						BackgroundTransparency={1}
-						Rotation={rotation}
-						Font={Enum.Font.GothamBold}
-						TextScaled
-					>
-						<uistroke Thickness={2} Color={colors.black} />
-					</textlabel>
 					<uicorner CornerRadius={new UDim(0.5, 0.5)} />
 				</frame>
 			)}

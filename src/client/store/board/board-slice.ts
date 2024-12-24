@@ -6,6 +6,8 @@ const _ = false;
 interface BoardState {
 	board: Board;
 	playerOption: PlayerOption;
+	player1: number | undefined;
+	player2: number | undefined;
 }
 
 const initialState: BoardState = {
@@ -18,6 +20,8 @@ const initialState: BoardState = {
 		[_, _, _, _, _, _, _],
 	],
 	playerOption: "PLAYER_1",
+	player1: undefined,
+	player2: undefined,
 };
 
 export const boardSlice = createProducer(initialState, {
@@ -52,5 +56,11 @@ export const boardSlice = createProducer(initialState, {
 	swapPlayerOption: (state) => ({
 		...state,
 		playerOption: state.playerOption === "PLAYER_1" ? "PLAYER_2" : "PLAYER_1",
+	}),
+
+	setPlayers: (state, player1: number, player2: number) => ({
+		...state,
+		player1,
+		player2,
 	}),
 });

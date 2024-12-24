@@ -1,6 +1,5 @@
 import React from "@rbxts/react";
-import { useSelector } from "@rbxts/react-reflex";
-import { producer } from "client/store";
+import { useProducer, useSelector } from "@rbxts/react-reflex";
 import { selectBoardIsFull, selectColumnIsFull, selectPlayerOption, selectWinner } from "client/store/board";
 import { images } from "shared/game/constants";
 import { colors } from "shared/game/constants/color";
@@ -10,6 +9,8 @@ interface DropButtonProps {
 }
 
 export function DropButton({ columnIndex }: DropButtonProps) {
+	const producer = useProducer();
+
 	const playerOption = useSelector(selectPlayerOption);
 	const winner = useSelector(selectWinner);
 	const boardIsFull = useSelector(selectBoardIsFull);

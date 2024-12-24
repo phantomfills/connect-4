@@ -1,8 +1,10 @@
 import React from "@rbxts/react";
-import { producer } from "client/store";
+import { useProducer } from "@rbxts/react-reflex";
 import { colors } from "shared/game/constants/color";
 
 export function ResetButton() {
+	const producer = useProducer();
+
 	return (
 		<textbutton
 			Text="Start Over"

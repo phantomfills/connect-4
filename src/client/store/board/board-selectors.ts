@@ -15,6 +15,9 @@ export const selectBoardIsFull = (state: RootState) => {
 	return board[0].every((cell) => cell !== false);
 };
 
+export const selectPlayer1 = (state: RootState) => state.board.player1;
+export const selectPlayer2 = (state: RootState) => state.board.player2;
+
 const checkHorizontalWin = (board: Board) => {
 	for (let row = 0; row < 6; row++) {
 		for (let col = 0; col < 4; col++) {
