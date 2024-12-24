@@ -1,15 +1,18 @@
 import React from "@rbxts/react";
+import { useSelector } from "@rbxts/react-reflex";
 import { producer } from "client/store";
-import { selectColumnIsFull } from "client/store/board";
-import { images, PlayerOption } from "shared/game/constants";
+import { selectBoardIsFull, selectColumnIsFull, selectPlayerOption, selectWinner } from "client/store/board";
+import { images } from "shared/game/constants";
 
 interface DropButtonProps {
 	columnIndex: number;
-	playerOption: PlayerOption;
-	state: "PLAYER_1" | "PLAYER_2" | "DRAW" | false;
 }
 
-export function DropButton({ columnIndex, playerOption, state }: DropButtonProps) {
+export function DropButton({ columnIndex }: DropButtonProps) {
+	const playerOption = useSelector(selectPlayerOption);
+	const winner = useSelector(selectWinner);
+	const boardIsFull = useSelector(selectBoardIsFull);
+
 	return (
 		<imagebutton
 			Image={images.drop_counter}
@@ -20,7 +23,7 @@ export function DropButton({ columnIndex, playerOption, state }: DropButtonProps
 			AutoButtonColor={true}
 			Event={{
 				MouseButton1Click: () => {
-					if (state) return;
+					if (winner || boardIsFull) return;
 					if (producer.getState(selectColumnIsFull(columnIndex))) return;
 
 					producer.drop(columnIndex, playerOption);

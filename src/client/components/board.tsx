@@ -20,12 +20,7 @@ export function Board() {
 			BackgroundTransparency={1}
 		>
 			{board[0].map((_, columnIndex) => (
-				<DropButton
-					columnIndex={columnIndex}
-					playerOption={playerOption}
-					state={!winner && boardIsFull ? "DRAW" : winner}
-					key={`drop-button-${columnIndex}`}
-				/>
+				<DropButton columnIndex={columnIndex} key={`drop-button-${columnIndex}`} />
 			))}
 
 			{board.map((row, rowIndex) => {

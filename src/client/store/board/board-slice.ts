@@ -32,7 +32,7 @@ export const boardSlice = createProducer(initialState, {
 		const emptyColumn = column.filter((coordinate) => {
 			return state.board[coordinate[0]][coordinate[1]] === false;
 		});
-		if (emptyColumn.isEmpty()) return error("Cannot drop; column is empty!");
+		if (emptyColumn.isEmpty()) error("Cannot drop; column is full!");
 
 		const lowestCoordinate = emptyColumn[emptyColumn.size() - 1];
 
