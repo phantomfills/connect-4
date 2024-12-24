@@ -4,7 +4,7 @@ import { producer } from "client/store";
 export function ResetButton() {
 	return (
 		<textbutton
-			Text="Reset Game"
+			Text="Start Over"
 			Size={new UDim2(0, 100, 0, 40)}
 			Position={new UDim2(0, 125, 0, 400)}
 			BackgroundColor3={Color3.fromRGB(255, 100, 100)}
