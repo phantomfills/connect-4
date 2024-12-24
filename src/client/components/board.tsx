@@ -1,6 +1,6 @@
 import React from "@rbxts/react";
 import { useSelector } from "@rbxts/react-reflex";
-import { selectBoard, selectBoardIsFull, selectPlayerOption, selectWinner } from "client/store/board";
+import { selectBoard } from "client/store/board";
 import { DropButton } from "./drop-button";
 import { Cell } from "./cell";
 import { ResetButton } from "./reset-button";
@@ -8,9 +8,6 @@ import { GameState } from "./game-state";
 
 export function Board() {
 	const board = useSelector(selectBoard);
-	const playerOption = useSelector(selectPlayerOption);
-	const winner = useSelector(selectWinner);
-	const boardIsFull = useSelector(selectBoardIsFull);
 
 	return (
 		<frame
