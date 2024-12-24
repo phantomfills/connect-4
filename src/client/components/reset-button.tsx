@@ -1,5 +1,6 @@
 import React from "@rbxts/react";
 import { producer } from "client/store";
+import { colors } from "shared/game/constants/color";
 
 export function ResetButton() {
 	return (
@@ -7,8 +8,8 @@ export function ResetButton() {
 			Text="Start Over"
 			Size={new UDim2(0, 100, 0, 40)}
 			Position={new UDim2(0, 125, 0, 400)}
-			BackgroundColor3={Color3.fromRGB(255, 100, 100)}
-			TextColor3={Color3.fromRGB(255, 255, 255)}
+			BackgroundColor3={colors.red}
+			TextColor3={colors.white}
 			Font={Enum.Font.GothamBold}
 			TextSize={16}
 			AutoButtonColor={true}

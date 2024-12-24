@@ -5,6 +5,7 @@ import { DropButton } from "./drop-button";
 import { Cell } from "./cell";
 import { ResetButton } from "./reset-button";
 import { GameState } from "./game-state";
+import { colors } from "shared/game/constants/color";
 
 export function Board() {
 	const board = useSelector(selectBoard);
@@ -40,14 +41,14 @@ export function Board() {
 			<frame
 				Size={new UDim2(0, 35, 0, 150)}
 				Position={new UDim2(0, -30, 0, 300)}
-				BackgroundColor3={Color3.fromRGB(153, 163, 227)}
+				BackgroundColor3={colors.dark_blue}
 				BorderSizePixel={0}
 				ZIndex={-1}
 			/>
 			<frame
 				Size={new UDim2(0, 35, 0, 150)}
 				Position={new UDim2(0, 345, 0, 300)}
-				BackgroundColor3={Color3.fromRGB(153, 163, 227)}
+				BackgroundColor3={colors.dark_blue}
 				BorderSizePixel={0}
 				ZIndex={-1}
 			/>

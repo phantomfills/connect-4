@@ -3,6 +3,7 @@ import { useSelector } from "@rbxts/react-reflex";
 import { producer } from "client/store";
 import { selectBoardIsFull, selectColumnIsFull, selectPlayerOption, selectWinner } from "client/store/board";
 import { images } from "shared/game/constants";
+import { colors } from "shared/game/constants/color";
 
 interface DropButtonProps {
 	columnIndex: number;
@@ -15,10 +16,10 @@ export function DropButton({ columnIndex }: DropButtonProps) {
 
 	return (
 		<imagebutton
-			Image={images.down_arrow}
+			Image={images.downArrow}
 			Size={new UDim2(0, 40, 0, 40)}
 			Position={new UDim2(0, columnIndex * 50 + 5, 0, -10)}
-			BackgroundColor3={Color3.fromRGB(255, 255, 255)}
+			BackgroundColor3={colors.white}
 			BackgroundTransparency={0.7}
 			AutoButtonColor={true}
 			Event={{
@@ -32,7 +33,7 @@ export function DropButton({ columnIndex }: DropButtonProps) {
 			}}
 		>
 			<uicorner CornerRadius={new UDim(0.15, 0)} />
-			<uistroke Color={Color3.fromRGB(255, 255, 255)} Thickness={2} />
+			<uistroke Color={colors.black} Thickness={2} />
 		</imagebutton>
 	);
 }
