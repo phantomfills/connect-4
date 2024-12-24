@@ -10,6 +10,11 @@ export const selectColumnIsFull = (columnIndex: number) => (state: RootState) =>
 	return board[0][columnIndex] !== false;
 };
 
+export const selectBoardIsFull = (state: RootState) => {
+	const board = selectBoard(state);
+	return board[0].every((cell) => cell !== false);
+};
+
 const checkHorizontalWin = (board: Board) => {
 	for (let row = 0; row < 6; row++) {
 		for (let col = 0; col < 4; col++) {

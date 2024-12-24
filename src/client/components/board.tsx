@@ -1,22 +1,38 @@
 import React from "@rbxts/react";
 import { useSelector } from "@rbxts/react-reflex";
 import { producer } from "client/store";
-import { selectBoard, selectColumnIsFull, selectPlayerOption, selectWinner } from "client/store/board";
+import {
+	selectBoard,
+	selectBoardIsFull,
+	selectColumnIsFull,
+	selectPlayerOption,
+	selectWinner,
+} from "client/store/board";
 import { images } from "shared/game/constants";
 
 export function Board() {
 	const board = useSelector(selectBoard);
 	const playerOption = useSelector(selectPlayerOption);
 	const winner = useSelector(selectWinner);
+	const boardIsFull = useSelector(selectBoardIsFull);
 
 	return (
-		<frame Size={new UDim2(1, 0, 1, 0)} BackgroundTransparency={1}>
+		<frame
+			Size={new UDim2(0, 400, 0, 450)}
+			Position={new UDim2(0.5, 0, 0.5, 0)}
+			AnchorPoint={new Vector2(0.5, 0.5)}
+			BackgroundTransparency={1}
+		>
 			{board[0].map((_, columnIndex) => (
 				<imagebutton
 					Image={images.drop_counter}
-					Size={new UDim2(0, 30, 0, 35)}
-					Position={new UDim2(0, columnIndex * 50 + 15, 0, 5)}
-					BackgroundTransparency={1}
+					Size={new UDim2(0, 40, 0, 40)}
+					Position={new UDim2(0, columnIndex * 50 + 10, 0, 0)}
+					BackgroundColor3={
+						playerOption === "PLAYER_1" ? Color3.fromRGB(46, 255, 46) : Color3.fromRGB(255, 255, 61)
+					}
+					BackgroundTransparency={0.7}
+					AutoButtonColor={true}
 					Event={{
 						MouseButton1Click: () => {
 							if (winner) return;
@@ -28,7 +44,10 @@ export function Board() {
 							producer.swapPlayerOption();
 						},
 					}}
-				/>
+				>
+					<uicorner CornerRadius={new UDim(0.2, 0)} />
+					<uistroke Color={Color3.fromRGB(255, 255, 255)} Thickness={2} Transparency={0.5} />
+				</imagebutton>
 			))}
 
 			{board.map((row, rowIndex) => {
@@ -74,30 +93,41 @@ export function Board() {
 			})}
 
 			<textbutton
-				Text="Clear"
-				Size={new UDim2(0, 50, 0, 30)}
-				Position={new UDim2(0, 0, 0, 370)}
-				BackgroundColor3={Color3.fromRGB(255, 255, 255)}
+				Text="Reset Game"
+				Size={new UDim2(0, 100, 0, 40)}
+				Position={new UDim2(0, 125, 0, 400)}
+				BackgroundColor3={Color3.fromRGB(255, 100, 100)}
+				TextColor3={Color3.fromRGB(255, 255, 255)}
+				Font={Enum.Font.GothamBold}
+				TextSize={16}
+				AutoButtonColor={true}
 				Event={{
 					MouseButton1Click: () => {
 						producer.resetBoard();
 					},
 				}}
-			/>
+			>
+				<uicorner CornerRadius={new UDim(0.2, 0)} />
+				<uipadding PaddingTop={new UDim(0.2, 0)} PaddingBottom={new UDim(0.2, 0)} />
+			</textbutton>
 
 			<textlabel
-				Size={new UDim2(0, 100, 0, 30)}
-				Position={new UDim2(0, 50, 0, 370)}
+				Size={new UDim2(0, 100, 0, 40)}
+				Position={new UDim2(0, 125, 0, 360)}
 				BackgroundTransparency={1}
 				TextColor3={Color3.fromRGB(255, 255, 255)}
+				Font={Enum.Font.GothamBold}
+				TextSize={18}
 				Text={
 					winner
-						? winner === "PLAYER_1"
-							? "Player 1 wins!"
-							: "Player 2 wins!"
-						: `${playerOption === "PLAYER_1" ? "Player 1" : "Player 2"}'s turn!`
+						? `${winner === "PLAYER_1" ? "Player 1" : "Player 2"} Wins!`
+						: boardIsFull
+							? "Draw!"
+							: `${playerOption === "PLAYER_1" ? "Player 1" : "Player 2"}'s Turn`
 				}
-			/>
+			>
+				<uistroke Color={Color3.fromRGB(0, 0, 0)} Thickness={2} />
+			</textlabel>
 		</frame>
 	);
 }
