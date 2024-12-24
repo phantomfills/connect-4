@@ -1,0 +1,35 @@
+import React from "@rbxts/react";
+import { producer } from "client/store";
+import { selectColumnIsFull } from "client/store/board";
+import { images, PlayerOption } from "shared/game/constants";
+
+interface DropButtonProps {
+	columnIndex: number;
+	playerOption: PlayerOption;
+	state: "PLAYER_1" | "PLAYER_2" | "DRAW" | false;
+}
+
+export function DropButton({ columnIndex, playerOption, state }: DropButtonProps) {
+	return (
+		<imagebutton
+			Image={images.drop_counter}
+			Size={new UDim2(0, 40, 0, 40)}
+			Position={new UDim2(0, columnIndex * 50 + 10, 0, 0)}
+			BackgroundColor3={Color3.fromRGB(255, 255, 255)}
+			BackgroundTransparency={0.7}
+			AutoButtonColor={true}
+			Event={{
+				MouseButton1Click: () => {
+					if (state) return;
+					if (producer.getState(selectColumnIsFull(columnIndex))) return;
+
+					producer.drop(columnIndex, playerOption);
+					producer.swapPlayerOption();
+				},
+			}}
+		>
+			<uicorner CornerRadius={new UDim(0.15, 0)} />
+			<uistroke Color={Color3.fromRGB(255, 255, 255)} Thickness={2} />
+		</imagebutton>
+	);
+}
