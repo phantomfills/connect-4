@@ -37,6 +37,21 @@ export function Board() {
 				);
 			})}
 
+			<frame
+				Size={new UDim2(0, 35, 0, 150)}
+				Position={new UDim2(0, -30, 0, 300)}
+				BackgroundColor3={Color3.fromRGB(153, 163, 227)}
+				BorderSizePixel={0}
+				ZIndex={-1}
+			/>
+			<frame
+				Size={new UDim2(0, 35, 0, 150)}
+				Position={new UDim2(0, 345, 0, 300)}
+				BackgroundColor3={Color3.fromRGB(153, 163, 227)}
+				BorderSizePixel={0}
+				ZIndex={-1}
+			/>
+
 			<ResetButton />
 			<GameState />
 		</frame>
