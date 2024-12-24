@@ -2,6 +2,7 @@ import React from "@rbxts/react";
 import { useSelector } from "@rbxts/react-reflex";
 import { producer } from "client/store";
 import { selectBoard, selectColumnIsFull, selectPlayerOption, selectWinner } from "client/store/board";
+import { images } from "shared/game/constants";
 
 export function Board() {
 	const board = useSelector(selectBoard);
@@ -11,11 +12,11 @@ export function Board() {
 	return (
 		<frame Size={new UDim2(1, 0, 1, 0)} BackgroundTransparency={1}>
 			{board[0].map((_, columnIndex) => (
-				<textbutton
-					Text="Drop"
-					Size={new UDim2(0, 50, 0, 30)}
-					Position={new UDim2(0, columnIndex * 50, 0, 0)}
-					BackgroundColor3={Color3.fromRGB(255, 255, 255)}
+				<imagebutton
+					Image={images.drop_counter}
+					Size={new UDim2(0, 30, 0, 35)}
+					Position={new UDim2(0, columnIndex * 50 + 15, 0, 5)}
+					BackgroundTransparency={1}
 					Event={{
 						MouseButton1Click: () => {
 							if (winner) return;
@@ -38,23 +39,30 @@ export function Board() {
 								<frame
 									Size={new UDim2(0, 50, 0, 50)}
 									Position={new UDim2(0, columnIndex * 50, 0, (rowIndex + 1) * 50)}
-									BackgroundColor3={Color3.fromRGB(255, 153, 153)}
+									BackgroundTransparency={1}
 								>
+									<frame
+										Size={new UDim2(0, 40, 0, 40)}
+										Position={new UDim2(0, 5, 0, 5)}
+										BackgroundTransparency={1}
+									>
+										<uicorner CornerRadius={new UDim(0.5, 0.5)} />
+										<uistroke
+											LineJoinMode={"Miter"}
+											Thickness={10}
+											Color={Color3.fromRGB(171, 179, 255)}
+										/>
+									</frame>
 									{cell !== false && (
 										<frame
 											Size={new UDim2(0, 40, 0, 40)}
 											Position={new UDim2(0, 5, 0, 5)}
 											BackgroundColor3={
 												cell === "PLAYER_1"
-													? Color3.fromRGB(153, 255, 255)
+													? Color3.fromRGB(153, 255, 153)
 													: Color3.fromRGB(255, 255, 224)
 											}
 										>
-											<textlabel
-												Size={new UDim2(1, 0, 1, 0)}
-												BackgroundTransparency={1}
-												Text={cell === "PLAYER_1" ? "1" : "2"}
-											/>
 											<uicorner CornerRadius={new UDim(0.5, 0.5)} />
 										</frame>
 									)}
